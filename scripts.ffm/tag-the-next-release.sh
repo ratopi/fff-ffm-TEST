@@ -24,37 +24,45 @@ fi
 
 #
 
-vfile="/tmp/vfile.$$"
-
-(
-echo "# Please specify the wanted tag version and next version number"
-echo "#"
-echo "# The current version is"
-echo "#"
-echo "# $currentversion"
-echo "#"
-echo "# I propose the tag version and the next version will be the following:"
 echo
-echo "tagversion=$tagversion"
-echo "nextversion=$nextversion"
+echo "Die aktuelle Entwicklungsversion ist: $currentversion"
 echo
-) > "$vfile"
 
-vi "$vfile"
+echo -n "Bitte gebe die gewuenschte Release-Version ein [Vorgabe: $tagversion] > "
+read itagversion
 
-. "$vfile"
+echo -n "Bitte gebe die Version fuer die Entwicklung ein [Vorgabe: $nextversion] > "
+read inextversion
+
+if [ "$itagversion" ]; then
+	tagversion="$itagversion"
+fi
+
+if [ "$inextversion" ]; then
+	nextversion="$inextversion"
+fi
 
 echo
-echo "You entered:"
-echo "tagversion  = $tagversion"
-echo "nextversion = $nextversion"
+echo "Deine Wahl ist:"
+echo "Release-Version....: $tagversion"
+echo "Entwicklungsversion: $nextversion"
 echo
+
+echo -n "Wenn das korrekt ist gebe bitte 'OKAY' ein > "
+read yesno
+
+if [ "$yesno" != "OKAY" ]; then
+	echo
+	echo "Script wird auf Wunsch abgebrochen"
+	echo
+	exit 1
+fi
 
 # now checking if tagversion is already existing
 
 if git tag -l | grep -q "^$tagversion$"; then
-	echo "**** The tag '$tagversion' is already exisiting"
-	echo "**** Script will be aborted"
+	echo
+	echo "**** Das Tag '$tagversion' existiert bereits"
 	echo
 	exit 1
 fi
@@ -65,25 +73,23 @@ fi
 
 echo "$tagversion" > "$versionfile"
 git add "$versionfile"
-git commit -m "version changed to '$tagversion' for new release (by script $( basename "$0" ))"
-git tag -a -m "release tag (by script $( basename "$0" ))" "$tagversion"
+git commit -m "version changed to '$tagversion' for new release (by $( basename "$0" ))"
+git tag -a -m "release tag (by $( basename "$0" ))" "$tagversion"
 
 # set new snapshot version
 
 echo "$nextversion" > "$versionfile"
 git add "$versionfile"
-git commit -m "version changed to '$nextversion' for developing in master (by script $( basename "$0" ))"
+git commit -m "version changed to '$nextversion' for developing in master (by $( basename "$0" ))"
 
 # done ...
 
 echo
-echo "we are successfully created the new tag"
-echo "* $tagversion"
+echo "Das Release-Tag '$tagversion' wurde erfolgreich angelegt."
 echo
-echo "the master is now at version"
-echo "* $nextversion"
+echo "Der master-Branch (Entwicklungszweig) steht nun auf Version '$nextversion'"
 echo
-echo "IMPORTANT! Please push up the new tag and the changes with:"
+echo "ACHTUNG! Bitte pushe das neue Tag und die Aenderung manuell mit dem folgenden Befehl zum Git-Server hoch:"
 echo
 echo "   git push origin $tagversion"
 echo

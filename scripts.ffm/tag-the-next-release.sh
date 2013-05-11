@@ -65,14 +65,14 @@ fi
 
 echo "$tagversion" > "$versionfile"
 git add "$versionfile"
-git commit -m "version changed for new release (by script $( basename "$0" ))"
+git commit -m "version changed to '$tagversion' for new release (by script $( basename "$0" ))"
 git tag -a -m "release tag (by script $( basename "$0" ))" "$tagversion"
 
 # set new snapshot version
 
 echo "$nextversion" > "$versionfile"
 git add "$versionfile"
-git commit -m "version changed to snapshot (by script $( basename "$0" ))"
+git commit -m "version changed to '$nextversion' for developing in master (by script $( basename "$0" ))"
 
 # done ...
 

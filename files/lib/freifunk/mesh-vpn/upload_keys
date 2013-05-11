@@ -1,0 +1,12 @@
+#!/bin/sh
+
+path="$( dirname "$0" )"
+
+#
+
+grep -h "remote" "$path/"*/* | sed -e 's:" .*::' -e 's:.* "::' | while read host; do
+
+	"$path/upload_key" "http://$host" "$1" &
+
+done
+

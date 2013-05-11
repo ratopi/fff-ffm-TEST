@@ -1,9 +1,10 @@
-# Inhalt
+# Firmware von Freifunk Frankfurt am Main
 
 Dieses Repository enthält die Freifunk-Firmware, so wie sie im Freifunk-Netz in Frankfurt am Main (Ffm) verwendet wird.
-
 Es ist ein Fork der KBU-Firmware, die wie lff wiederum ein Fork der Lübecker Firmwarest.
 
+Weitere Informationen zu unserem Freifunk Netz findest Du unter [Wiki Freifunk Frankfurt](http://wiki.freifunk.net/Freifunk_Frankfurt).
+Hier findest Du auch Informationen von wo Du die aktuell empfohlene Firmware herunterladen kannst.
 
 ## Versionierung
 
@@ -27,17 +28,8 @@ Es fragt die gewünschten Versionsnummer ab und kümmert sich um den Rest.
 
 Wir verwenden momentan nur einen Branch ("master"), welche aus dem KBU branch "0.3-generic" hervorgegangen ist.
 
-Die Release-Tags werden normalerweise aus diesem herausgeneriert.
-
 
 ## Build
 Unsere Build-Scripte befinden sich im Verzeichnis "scripts.ffm/".
 Diese Build-Scripte sind aus dem Code aus dem KBU-Jenkins abgeleitet.
-
-Zum lokalen Bauen der Firmware reicht
-
-# Freifunk Frankfurt am Main
-
-Weitere Informationen zu unserem Freifunk Netz findest Du unter [Wiki Freifunk Frankfurt](http://wiki.freifunk.net/Freifunk_Frankfurt).
-Hier findest Du auch Informationen von wo Du die aktuell empfohlene Firmware herunterladen kannst.
 

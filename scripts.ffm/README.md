@@ -2,12 +2,14 @@
 
 Dieses Verzeichnis enthält unterschiedliche Scripte, die den Build-Prozess vereinfachen und unterstützen sollen.
 
+Die Scripte wurde für das Frankfurter Freifunk-Netz ffm erstellt, lassen sich aber eventuell auch für andere Freifunk-Netze verwenden.
+
 ## tag-the-next-release.sh
 
 Dieses Script legt ein Tag mit der nächsten Versionsnummer an.
 Die Schritte im einzelnen:
 
-* Abfrage der gewünschten Versionsnummer und nächsten Snapshot-Versionsnummer. Das Script schlägt hierbei die Versionsnummern vor, die normalerweise passen sollten.  Falls nicht können sie geändert werden.
+* Abfrage der gewünschten Versionsnummer und nächsten Snapshot-Versionsnummer. Das Script schlägt hierbei die Versionsnummern vor, die normalerweise passen sollten; falls nicht können sie geändert werden.
 * Änderung der Dateien, die die Versionsnummer enthalten: Setzen der nächsten Version
 * Commit der Änderungen
 * Tagging mit der gewählten Versionsnummer

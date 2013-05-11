@@ -85,6 +85,6 @@ echo "* $nextversion"
 echo
 echo "IMPORTANT! Please push up the new tag and the changes with:"
 echo
-echo "   git push $tagversion"
+echo "   git push origin $tagversion"
 echo
 

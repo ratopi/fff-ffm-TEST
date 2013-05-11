@@ -77,7 +77,7 @@ git commit -m "version changed to snapshot (by script $( basename "$0" ))"
 # done ...
 
 echo
-echo "we are successfully create the new tag"
+echo "we are successfully created the new tag"
 echo "* $tagversion"
 echo
 echo "the master is now at version"
